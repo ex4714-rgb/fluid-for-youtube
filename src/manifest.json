@@ -1,0 +1,60 @@
+{
+  "manifest_version": 2,
+  "name": "Fluid for YouTube",
+  "version": "1.3.1",
+  "description": "Helps older PCs browse YouTube more smoothly, prioritizes visible thumbnails and lets you choose playback codecs.",
+  "browser_specific_settings": {
+    "gecko": {
+      "strict_min_version": "140.0",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      },
+      "id": "fluid-for-youtube-xcc-ffd7c4325b15478aa3cd9d665314caa4@addons.mozilla.org"
+    },
+    "gecko_android": {
+      "strict_min_version": "142.0"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "css": [
+        "navigation.css"
+      ],
+      "run_at": "document_start",
+      "js": [
+        "thumbnails.js"
+      ]
+    },
+    {
+      "all_frames": true,
+      "run_at": "document_start",
+      "js": [
+        "prefs.js",
+        "codecs.js"
+      ],
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://www.youtube-nocookie.com/embed/*"
+      ]
+    }
+  ],
+  "icons": {
+    "48": "icon.svg",
+    "96": "icon.svg"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "browser_action": {
+    "default_popup": "settings.html",
+    "default_title": "Fluid for YouTube"
+  },
+  "options_ui": {
+    "page": "settings.html"
+  }
+}

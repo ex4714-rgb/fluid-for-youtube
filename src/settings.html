@@ -1,0 +1,12 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Fluid for YouTube</title>
+<style>:root{color-scheme:light dark;font:15px system-ui}body{min-width:245px;margin:18px}label{display:block;padding:4px}fieldset{margin:12px 0;border:1px solid #8898;border-radius:8px}p{max-width:37ch}input{accent-color:#338477}</style>
+<h2>YouTube Playback</h2><label><input id="filter" type="checkbox"> Enable codec filter</label>
+<fieldset><legend>Video codecs to block</legend>
+<label><input id="vp8" type="checkbox"> VP8</label>
+<label><input id="vp9" type="checkbox"> VP9</label>
+<label><input id="av1" type="checkbox"> AV1</label>
+<label><input id="h264" type="checkbox"> H.264</label></fieldset>
+<fieldset><legend>Audio codecs to block</legend><label><input id="opus" type="checkbox"> Opus</label><label><input id="aac" type="checkbox"> AAC</label></fieldset>
+<label><input id="limitFps" type="checkbox"> Block formats above 30 fps</label>
+<p id="status" role="status">Reload the video after changing a setting.</p>
+<script src="prefs.js"></script><script src="settings.js"></script></html>

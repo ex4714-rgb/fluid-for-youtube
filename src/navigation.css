@@ -1,0 +1,43 @@
+/* Firefox peut différer le rendu des cartes éloignées de l'écran.
+   « auto » mémorise la hauteur réelle après le premier affichage.
+   Seules les cartes vidéo ordinaires sont concernées. */
+@supports (content-visibility: auto) and (contain-intrinsic-block-size: auto 200px) {
+  @media screen {
+    ytd-rich-grid-renderer ytd-rich-item-renderer:has(> #content > :is(yt-lockup-view-model, ytd-rich-grid-media)):not(:hover, :focus-within) {
+      content-visibility: auto;
+      contain-intrinsic-block-size: auto clamp(185px, 18vw, 320px);
+    }
+
+    ytd-search yt-item-section-renderer > #contents > div > yt-lockup-view-model:not(:hover, :focus-within),
+    ytd-search #contents > :is(ytd-video-renderer, yt-lockup-view-model):not(:hover, :focus-within) {
+      content-visibility: auto;
+      contain-intrinsic-block-size: auto clamp(145px, 17vw, 255px);
+    }
+
+    ytd-watch-flexy #related #items > :is(ytd-compact-video-renderer, yt-lockup-view-model):not(:hover, :focus-within) {
+      content-visibility: auto;
+      contain-intrinsic-block-size: auto 100px;
+    }
+
+    ytd-browse[page-subtype="playlist"] yt-item-section-renderer > #contents > div > yt-lockup-view-model:not(:hover, :focus-within),
+    ytd-browse[page-subtype="playlist"] ytd-item-section-renderer > #contents > yt-lockup-view-model:not(:hover, :focus-within),
+    ytd-playlist-video-list-renderer #contents > ytd-playlist-video-renderer:not(:hover, :focus-within) {
+      content-visibility: auto;
+      contain-intrinsic-block-size: auto 96px;
+    }
+
+    /* Les réponses se trouvent en dehors du bloc ciblé. */
+    ytd-comments ytd-comment-thread-renderer > :is(ytd-comment-view-model, ytd-comment-renderer)#comment:not(:hover, :focus-within) {
+      content-visibility: auto;
+      contain-intrinsic-block-size: auto 96px;
+    }
+
+    /* Le rayon entier garde sa géométrie horizontale et ses boutons. */
+    ytd-search #contents > ytd-reel-shelf-renderer:not(:hover, :focus-within),
+    ytd-rich-section-renderer > #content > ytd-rich-shelf-renderer[is-shorts]:not(:hover, :focus-within) {
+      content-visibility: auto;
+      contain-intrinsic-block-size: auto clamp(310px, 36vw, 510px);
+    }
+
+  }
+}
